@@ -1,8 +1,7 @@
 Ansible Role: ansible_role_hostsfile
 =========
 
-An Ansible role that configures /etc/hosts on supported Linux distributions and C:\Windows\System32\drivers\etc\hosts on supported Windows versions. The contents of the hosts file is replaced with content from variables. Any modifications will result in a backup of original file, the backed up file will have a name in the format of hosts.\<int>.\<timestamp>~.
-This role supports the following OS/Linux distributions:
+Configures /etc/hosts on supported Linux distributions and C:\Windows\System32\drivers\etc\hosts on supported Windows versions. The contents of the hosts file is replaced with content from variables. Any modifications will result in a backup of original file.
 
 <ul>
 <li>CentOS 7/8
@@ -15,12 +14,12 @@ Requirements
 ------------
 
 This role is dependent on the ansible.windows collection.
-To install it, use: ansible-galaxy collection install ansible.windows.
+To install it, use: `ansible-galaxy collection install ansible.windows`
 
 Role Variables
 --------------
 
-Available variables are listed below, along with default values where applicable (see defaults/main.yml):
+Available variables are listed below, along with default values where applicable (see `defaults/main.yml`):
 
     ansible_role_hostsfile_add_default_ipv4: true
 
