@@ -57,7 +57,7 @@ Optional, aliases to be added to the hosts entry.
 Dependencies
 ------------
 
-This role has no dependencies on other roles.
+None.
 
 Example Playbook
 ----------------
