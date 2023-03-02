@@ -2,7 +2,7 @@
 
 ansible_role_hostsfile_hosts_path: c:\windows\system32\drivers\etc\hosts
 
-ansible_role_hostsfile_ipv4_default: 
+ansible_role_hostsfile_ipv4_default:
   - '127.0.0.1 localhost'
-ansible_role_hostsfile_ipv6_default: 
+ansible_role_hostsfile_ipv6_default:
   - '::1     localhost'
