@@ -2,7 +2,7 @@
 - name: Include variables specific for the distribution.
   ansible.builtin.include_vars: "{{ item }}"
   with_items:
-    - "{{ ansible_distribution }}-{{ ansible_distribution_major_version }}.yml"
+    - "{{ ansible_distribution if ansible_system | lower == 'linux' else 'Windows' if ansible_os_family | lower == 'windows' }}.yml"
 
 - name: Import configure tasks.
   ansible.builtin.import_tasks:

@@ -3,16 +3,17 @@
   become: true
   ansible.builtin.template:
     src: hostsfile.j2
-    dest: "{{ ansible_role_hostsfile_hosts_path }}"
+    dest: "{{ hostsfile_hosts_path }}"
     owner: root
     group: root
     mode: '0644'
-    backup: "{{ ansible_role_hostsfile_backup | default('true') }}"
-  when: ansible_system == "Linux"
+    backup: "{{ hostsfile_backup | default('true') }}"
+  when: ansible_system | lower == "linux"
 
 - name: Install custom hosts file on Windows.
+  become: true
   ansible.windows.win_template:
     src: hostsfile.j2
-    dest: "{{ ansible_role_hostsfile_hosts_path }}"
-    backup: "{{ ansible_role_hostsfile_backup | default('true') }}"
-  when: ansible_system == "Windows"
+    dest: "{{ hostsfile_hosts_path }}"
+    backup: "{{ hostsfile_backup | default('true') }}"
+  when: ansible_os_family | lower == "windows"

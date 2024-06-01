@@ -1,0 +1,7 @@
+---
+
+hostsfile_hosts_path: c:\windows\system32\drivers\etc\hosts
+hostsfile_default_ipv4:
+  - '127.0.0.1 localhost'
+hostsfile_default_ipv6:
+  - '::1     localhost'

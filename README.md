@@ -1,33 +1,35 @@
-Ansible Role: ansible_role_hostsfile
+Ansible Role: hostsfile
 =========
 
-Configures /etc/hosts on supported Linux distributions and C:\Windows\System32\drivers\etc\hosts on supported Windows versions. The contents of the hosts file is replaced with content from variables. Any modifications will result in a backup of original file.
+Configures `/etc/hosts` on supported Linux distributions and `C:\Windows\System32\drivers\etc\hosts` on supported Windows versions. The hosts file contents are replaced with the content from specified variables. Any changes will result in a backup of the original file.
 
-<ul>
-<li>CentOS 7/8
-<li>Red Hat Enterprise Linux 7/8
-<li>Ubuntu 18/20/22
-<li>Windows Server 2012r2, 2016, 2019, 2022
-</ul>
+Supported Platforms
+-------------------
+- Enterprise Linux (Red Hat, CentOS, Alma Linux OS, Rocky Linux, Oracle Linux)
+- Debian/Ubuntu
+- Windows
+
 
 Requirements
 ------------
 
-This role is dependent on the ansible.windows collection.
-To install it, use: `ansible-galaxy collection install ansible.windows`
+This role depends on the `ansible.windows` collection. To install it, use:
+
+```bash
+ansible-galaxy collection install ansible.windows
+```
 
 Role Variables
 --------------
 
-Available variables are listed below, along with default values where applicable (see `defaults/main.yml`):
+Below is a list of available variables with their default values where applicable (see `defaults/main.yml`):
 
 | Variable | Required | Default | Comments |
 | -------- | -------- | ------- | -------- |
-| `ansible_role_hostsfile_add_default_ipv4` | No | true | Boolean, if set to true to add default IPv4 entries. |
-| `ansible_role_hostsfile_add_default_ipv6` | No | true | Boolean, if set to true add default ipv6 entries. |
-| `ansible_role_hostsfile_backup` | No | true | Boolean, if set to true create a backup of the hosts file when modifed.    |
-| `ansible_role_hostsfile_hosts_entries` | Yes | [] | List of host entries consisting of the following variables: `ip` which corresponds to the IP address of the host entry. `name` which corresponds to the FQDN of the hosts entry. `comment` optional comment to be added to the entry. `aliases` optional list of aliases to be added to the hosts entry. |
-
+| `hostsfile_add_default_ipv4` | No | true | Boolean. If true, adds default IPv4 entries. |
+| `hostsfile_add_default_ipv6` | No | true | Boolean. If true, adds default IPv6 entries. |
+| `hostsfile_backup` | No | true | Boolean. If true, creates a backup of the hosts file when modified. |
+| `hostsfile_hosts_entries` | Yes | [] | List of host entries, each consisting of: `ip` (IP address), `name` (FQDN), `comment` (optional comment), `aliases` (optional list of aliases). |
 
 Dependencies
 ------------
@@ -40,19 +42,25 @@ Example Playbook
     - hosts: servers
 
       vars:
-        ansible_role_hostsfile_add_default_ipv4: true
-        ansible_role_hostsfile_add_default_ipv6: false
-        ansible_role_hostsfile_backup: false
-        ansible_role_hostsfile_hosts_entries:
-          - ip: 1.2.3.4
-            name: examplehost.local
-            comment: added to provide access to examplehost
+        hostsfile_add_default_ipv4: true
+        hostsfile_add_default_ipv6: false
+        hostsfile_backup: true
+        hostsfile_hosts_entries:
+          - ip: 192.168.0.1
+            name: examplehost1.local
+            comment: hosts entry for examplehost1
             aliases:
-              - examplehost
+              - examplehost1
               - example1
+          - ip: 192.168.0.1
+            name: examplehost2.local
+            comment: hosts entry for examplehost2
+            aliases:
+              - examplehost2
+              - example2
 
       roles:
-        - role: ansible_role_hostsfile
+        - role: hostsfile
 
 License
 -------

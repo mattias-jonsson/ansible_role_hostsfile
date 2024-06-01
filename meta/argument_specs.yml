@@ -1,0 +1,26 @@
+---
+
+argument_specs:
+  main:
+    short_description: "Installs and configures the Linux Auditing System (auditd) on Enterprise Linux 7/8/9 (RHEL/CentOS/etc.) and Debian 11/12."
+    options:
+      hostsfile_add_default_ipv4:
+        description:
+          - If true, backup copies will be created for all configuration files modified during the role execution.
+        required: true
+        type: bool
+      hostsfile_add_default_ipv6:
+        description:
+          - If true, backup copies will be created for all configuration files modified during the role execution.
+        required: true
+        type: bool
+      hostsfile_backup:
+        description:
+          - If true, backup copies will be created for all configuration files modified during the role execution.
+        required: true
+        type: bool
+      hostsfile_hosts_entries:
+        description:
+          - If true, backup copies will be created for all configuration files modified during the role execution.
+        required: true
+        type: list

@@ -1,22 +1,24 @@
 # {{ ansible_managed }}
+{% if hostsfile_add_default_ipv4 %}
 
-{% if ansible_role_hostsfile_add_default_ipv4 %}
-# Default IPv4 entries
-{% for hostsentry in ansible_role_hostsfile_ipv4_default %}
+# IPv4 default entries
+{% for hostsentry in hostsfile_default_ipv4 %}
 {{ hostsentry }}
 {% endfor %}
 {% endif %}
+{% if hostsfile_add_default_ipv6 %}
 
-{% if ansible_role_hostsfile_add_default_ipv6 %}
-# Default IPv6 entries
-{% for hostsentry in ansible_role_hostsfile_ipv6_default %}
+# IPv6 default entries
+{% for hostsentry in hostsfile_default_ipv6 %}
 {{ hostsentry }}
 {% endfor %}
 {% endif %}
+{% if hostsfile_hosts_entries | length != 0 %}
+{% for host in hostsfile_hosts_entries %}
+{% if host.comment is defined %}
 
-{% if ansible_role_hostsfile_hosts_entries|length != 0 %}
-{% for host in ansible_role_hostsfile_hosts_entries %}
-{{ host.ip }}  {{ host.name }} {{ host.aliases | default('') | join(' ') }} {% if host.comment is defined %} # {{ host.comment }} {% endif %}
+# {{ host.comment }}{% endif %}
 
+{{ host.ip }}  {{ host.name }} {{ host.aliases | default('') | join(' ') }}
 {% endfor %}
 {% endif %}

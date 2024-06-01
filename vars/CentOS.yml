@@ -1,8 +1,7 @@
 ---
 
-ansible_role_hostsfile_hosts_path: /etc/hosts
-
-ansible_role_hostsfile_ipv4_default:
+hostsfile_hosts_path: /etc/hosts
+hostsfile_default_ipv4:
   - '127.0.0.1   localhost localhost.localdomain localhost4 localhost4.localdomain4'
-ansible_role_hostsfile_ipv6_default:
+hostsfile_default_ipv6:
   - '::1         localhost localhost.localdomain localhost6 localhost6.localdomain6'

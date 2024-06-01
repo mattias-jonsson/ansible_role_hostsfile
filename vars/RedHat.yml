@@ -1,0 +1,7 @@
+---
+
+hostsfile_hosts_path: /etc/hosts
+hostsfile_default_ipv4:
+  - '127.0.0.1   localhost localhost.localdomain localhost4 localhost4.localdomain4'
+hostsfile_default_ipv6:
+  - '::1         localhost localhost.localdomain localhost6 localhost6.localdomain6'

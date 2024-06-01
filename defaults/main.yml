@@ -1,6 +1,6 @@
 ---
-ansible_role_hostsfile_add_default_ipv4: true
-ansible_role_hostsfile_add_default_ipv6: true
-ansible_role_hostsfile_backup: true
 
-ansible_role_hostsfile_hosts_entries: []
+hostsfile_add_default_ipv4: true
+hostsfile_add_default_ipv6: true
+hostsfile_backup: true
+hostsfile_hosts_entries: []
